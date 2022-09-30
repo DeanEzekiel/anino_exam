@@ -12,6 +12,7 @@ Data Sources can be found in Assets > Scriptables. There are 2 folders inside fo
 As of writing, this is still incomplete. Below are what I haven't done yet:
 - Stop Button functionality
 - Advanced Spinning
+
 (I may not be able to finish the above as I was told my supposedly postponed class later would proceed.)
 
 Additional notes:
