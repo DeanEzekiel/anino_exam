@@ -45,7 +45,7 @@ namespace SlotMachine
         public void ShowSpinButton(bool toShow)
         {
             btnSpin.gameObject.SetActive(toShow);
-            btnStop.gameObject.SetActive(!toShow);
+            //btnStop.gameObject.SetActive(!toShow); // TODO
         }
 
         public void SetCoinText()

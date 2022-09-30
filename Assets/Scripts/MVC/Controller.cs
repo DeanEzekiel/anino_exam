@@ -67,6 +67,8 @@ namespace SlotMachine
                 model.SpinReels();
 
                 view.ShowSpinButton(false);
+
+                StartCoroutine(AutoStop(2));
             }
         }
 
@@ -79,6 +81,18 @@ namespace SlotMachine
 
             // TODO Compute for the winnings. May use a separate controller
             CheckWinnings();
+        }
+
+        private IEnumerator AutoStop(float duration)
+        {
+            float time = 0;
+            while (time < duration)
+            {
+                time += Time.deltaTime;
+                yield return null;
+            }
+
+            Stop();
         }
 
         private void CheckWinnings()
@@ -95,7 +109,7 @@ namespace SlotMachine
                 int[] combination = ListLines[i].Combination;
 
                 Debug.Log($"Pattern: {combination[0]} {combination[1]} {combination[2]} {combination[3]} {combination[4]} ");
-
+                counter = 0;
                 for (int j = 0; j < combination.Length; j++)
                 {
                     Debug.Log($"Value from [{combination[j]}, {j}]: {model.ArrResult[combination[j], j]}");
@@ -105,7 +119,6 @@ namespace SlotMachine
                         tempName = model.ArrResult[combination[j], j];
                         // get the cell
                         tempSymbol = GetSymbol(tempName);
-
                         //Debug.Log($"Symbol Name {tempName}");
                     }
                     else
@@ -113,28 +126,28 @@ namespace SlotMachine
                         if(tempName == model.ArrResult[combination[j], j])
                         {
                             counter++;
+
+                            if (j == combination.Length - 1)
+                            {
+                                Debug.Log($"Is tempSymbol NOT Null? {tempSymbol != null}");
+                                if (tempSymbol != null)
+                                {
+                                    Debug.Log("1 Counter index: " + counter + $" Time: {Time.time} j index at {j}");
+                                    winnings += tempSymbol.Payout[counter];
+                                }
+                                counter = 0;
+                            }
                         }
                         else
                         {
                             Debug.Log($"Is tempSymbol NOT Null? {tempSymbol != null}");
                             if (tempSymbol != null)
                             {
+                                Debug.Log("2 Counter index: " + counter + $" Time: {Time.time} j index at {j}");
                                 winnings += tempSymbol.Payout[counter];
                             }
                             counter = 0;
                             
-                            break;
-                        }
-
-                        if (j == combination.Length)
-                        {
-                            Debug.Log($"Is tempSymbol NOT Null? {tempSymbol != null}");
-                            if (tempSymbol != null)
-                            {
-                                winnings += tempSymbol.Payout[counter];
-                            }
-                            counter = 0;
-
                             break;
                         }
                     }
