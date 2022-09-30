@@ -3454,7 +3454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 2091995227}
-  initCoins: 100
+  initCoins: 1000
   Reels:
   - {fileID: 530364002}
   - {fileID: 1207637810}
