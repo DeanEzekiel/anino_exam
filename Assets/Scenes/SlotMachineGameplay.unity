@@ -4074,6 +4074,8 @@ MonoBehaviour:
   _listSymbols:
   - {fileID: 11400000, guid: 82487dbef41f14cd799ea08d4c1baaa2, type: 2}
   - {fileID: 11400000, guid: 8cffe8706f4734c8c89d829e3d1380ab, type: 2}
+  - {fileID: 11400000, guid: 163c71133e5bc4c8385dd03881221afb, type: 2}
+  - {fileID: 11400000, guid: b9a4a25de5c774f7ea6a2f83662b2c70, type: 2}
 --- !u!4 &1677881869
 Transform:
   m_ObjectHideFlags: 0
